@@ -1,6 +1,36 @@
 {
   "mcp_name": "Denmark Pest Management MCP",
   "jurisdiction": "DK",
+  "jurisdiction_name": "Denmark",
   "build_date": "2026-04-05",
-  "status": "template — data not yet populated"
+  "status": "populated",
+  "data_sources": [
+    "Middeldatabasen (middeldatabasen.dk)",
+    "SEGES Innovation",
+    "Aarhus Universitet (Institut for Agroekologi)",
+    "Miljostyrelsen"
+  ],
+  "counts": {
+    "pests": 17,
+    "treatments": 31,
+    "ipm_guidance": 6,
+    "symptoms": 27,
+    "approved_products": 12
+  },
+  "pest_types": {
+    "disease": 7,
+    "insect": 5,
+    "weed": 3,
+    "mollusc": 1,
+    "virus": 1
+  },
+  "crops_covered": [
+    "vinterhvede",
+    "vinterbyg",
+    "vaarbyg",
+    "havre",
+    "vinterraps",
+    "kartofler"
+  ],
+  "disclaimer": "Data er baseret paa danske godkendelser og anbefalinger. Tjek altid Middeldatabasen for aktuelle godkendelser."
 }

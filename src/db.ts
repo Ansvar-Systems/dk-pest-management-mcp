@@ -102,7 +102,7 @@ function initSchema(db: BetterSqlite3.Database): void {
       approved_crops TEXT,
       approval_expiry TEXT,
       registration_number TEXT,
-      source TEXT DEFAULT 'CRD',
+      source TEXT DEFAULT 'Middeldatabasen',
       jurisdiction TEXT DEFAULT 'DK'
     );
 

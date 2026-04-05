@@ -129,6 +129,6 @@ export function handleIdentifyFromSymptoms(db: Database, args: IdentifyFromSympt
     jurisdiction: jv.jurisdiction,
     results_count: ranked.length,
     diagnoses: ranked,
-    _meta: buildMeta({ source_url: 'https://ahdb.org.uk/knowledge-library' }),
+    _meta: buildMeta({ source_url: 'https://middeldatabasen.dk' }),
   };
 }

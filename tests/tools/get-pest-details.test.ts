@@ -20,19 +20,19 @@ describe('get_pest_details tool', () => {
 
   test('returns full pest profile for septoria', () => {
     const result = handleGetPestDetails(db, { pest_id: 'septoria-tritici' });
-    expect(result).toHaveProperty('name', 'Septoria Tritici Blotch');
+    expect(result).toHaveProperty('name', 'Septoria (Septoria tritici)');
     expect(result).toHaveProperty('pest_type', 'disease');
     const typed = result as { common_names: string[]; crops_affected: string[]; symptoms: unknown[] };
     expect(typed.common_names).toBeInstanceOf(Array);
-    expect(typed.common_names).toContain('Septoria leaf blotch');
-    expect(typed.crops_affected).toContain('wheat');
+    expect(typed.common_names).toContain('hvedebladplet');
+    expect(typed.crops_affected).toContain('vinterhvede');
     expect(typed.symptoms.length).toBe(3);
   });
 
   test('parses JSON arrays in common_names', () => {
-    const result = handleGetPestDetails(db, { pest_id: 'blackgrass' });
+    const result = handleGetPestDetails(db, { pest_id: 'ukrudt-rajgraes' });
     const typed = result as { common_names: string[] };
-    expect(typed.common_names).toEqual(['Slender meadow foxtail']);
+    expect(typed.common_names).toEqual(['agerraeveahle', 'rajgraes', 'blackgrass']);
   });
 
   test('returns not_found for unknown pest', () => {
@@ -41,7 +41,7 @@ describe('get_pest_details tool', () => {
   });
 
   test('rejects unsupported jurisdiction', () => {
-    const result = handleGetPestDetails(db, { pest_id: 'septoria-tritici', jurisdiction = 'DK' });
+    const result = handleGetPestDetails(db, { pest_id: 'septoria-tritici', jurisdiction: 'SE' });
     expect(result).toHaveProperty('error', 'jurisdiction_not_supported');
   });
 });

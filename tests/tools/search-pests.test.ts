@@ -24,13 +24,13 @@ describe('search_pests tool', () => {
     expect((result as { results_count: number }).results_count).toBeGreaterThan(0);
   });
 
-  test('returns results for wheat disease query', () => {
-    const result = handleSearchPests(db, { query: 'wheat' });
+  test('returns results for disease query', () => {
+    const result = handleSearchPests(db, { query: 'disease' });
     expect((result as { results_count: number }).results_count).toBeGreaterThan(0);
   });
 
   test('filters by pest_type', () => {
-    const result = handleSearchPests(db, { query: 'grass weed', pest_type: 'weed' });
+    const result = handleSearchPests(db, { query: 'graesukrudt', pest_type: 'weed' });
     const typed = result as { results: { pest_type: string }[] };
     for (const r of typed.results) {
       expect(r.pest_type).toBe('weed');

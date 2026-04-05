@@ -24,7 +24,7 @@ describe('get_treatments tool', () => {
     const typed = result as { treatments: { approach: string }[] };
     const approaches = typed.treatments.map(t => t.approach);
     expect(approaches).toContain('chemical');
-    expect(approaches).toContain('cultural');
+    expect(approaches).toContain('non_chemical');
   });
 
   test('filters by approach', () => {

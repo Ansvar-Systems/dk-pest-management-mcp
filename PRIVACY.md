@@ -12,7 +12,7 @@ This MCP server:
 
 ## Data Served
 
-All data returned by this server is sourced from publicly available UK government, AHDB, and HSE CRD publications. No personal data, proprietary data, or confidential information is included.
+All data returned by this server is sourced from publicly available Danish government, Middeldatabasen, SEGES Innovation, Aarhus Universitet, and Miljostyrelsen publications. No personal data, proprietary data, or confidential information is included.
 
 ## Self-Hosting
 

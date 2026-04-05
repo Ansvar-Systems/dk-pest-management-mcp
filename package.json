@@ -1,6 +1,6 @@
 {
   "name": "@ansvar-systems/dk-pest-management-mcp",
-  "mcpName": "io.github.ansvar-systems/uk-pest-management",
+  "mcpName": "io.github.ansvar-systems/dk-pest-management",
   "version": "0.1.0",
   "description": "MCP server for Danish pest management \u2014 Middeldatabasen, pesticidafgift, spr\u00f8jtejournal, IPM",
   "type": "module",
@@ -31,7 +31,8 @@
     "pest-management",
     "ipm",
     "crop-protection",
-    "ahdb"
+    "denmark",
+    "middeldatabasen"
   ],
   "author": "Ansvar Systems <info@ansvar.eu>",
   "license": "Apache-2.0",

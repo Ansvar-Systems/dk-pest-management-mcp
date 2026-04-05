@@ -4,13 +4,13 @@
 [![GHCR](https://github.com/ansvar-systems/dk-pest-management-mcp/actions/workflows/ghcr-build.yml/badge.svg)](https://github.com/ansvar-systems/dk-pest-management-mcp/actions/workflows/ghcr-build.yml)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-UK pest, disease, and weed management via the [Model Context Protocol](https://modelcontextprotocol.io). Identify crop threats, get treatment options, IPM guidance, and run symptom-based differential diagnosis -- all from your AI assistant.
+Danish pest, disease, and weed management via the [Model Context Protocol](https://modelcontextprotocol.io). Identify crop threats, get treatment options, IPM guidance, and run symptom-based differential diagnosis -- all from your AI assistant.
 
 Part of [Ansvar Open Agriculture](https://ansvar.eu/open-agriculture).
 
 ## Why This Exists
 
-Farmers and agronomists need quick access to pest identification, treatment options, and IPM thresholds. This information is published by AHDB and HSE but is scattered across knowledge libraries, PDFs, and the CRD pesticide database. This MCP server brings it all together in a searchable, structured format.
+Farmers and agronomists need quick access to pest identification, treatment options, and IPM thresholds. This information is published by Middeldatabasen, SEGES Innovation, and Aarhus Universitet but is scattered across databases, knowledge portals, and research publications. This MCP server brings it all together in a searchable, structured format.
 
 ## Quick Start
 
@@ -32,7 +32,7 @@ Add to `claude_desktop_config.json`:
 ### Claude Code
 
 ```bash
-claude mcp add uk-pest-management npx @ansvar/dk-pest-management-mcp
+claude mcp add dk-pest-management npx @ansvar/dk-pest-management-mcp
 ```
 
 ### Streamable HTTP (remote)
@@ -57,21 +57,21 @@ npx @ansvar/dk-pest-management-mcp
 
 Ask your AI assistant:
 
-- "What diseases affect winter wheat?"
-- "I see yellow patches on my wheat leaves with dark spots -- what could it be?"
-- "What are the treatment options for blackgrass?"
-- "Show me IPM guidance for septoria in winter wheat"
-- "What products contain prothioconazole approved for wheat?"
-- "What are all the pests and weeds that attack barley?"
+- "Hvilke sygdomme angriber vinterhvede?"
+- "Jeg ser gule pletter paa mine hvedeblade med sorte prikker -- hvad kan det vaere?"
+- "Hvad er behandlingsmulighederne for rajgraes?"
+- "Vis IPM-vejledning for Septoria i vinterhvede"
+- "Hvilke produkter med prothioconazole er godkendt til hvede?"
+- "Hvilke skadedyr og ukrudt angriber vaarbyg?"
 
 ## Stats
 
 | Metric | Value |
 |--------|-------|
 | Tools | 10 (3 meta + 7 domain) |
-| Jurisdiction | GB |
-| Data sources | AHDB Knowledge Library, HSE CRD Pesticide Register, AHDB IPM Guidance |
-| License (data) | Open Government Licence v3 |
+| Jurisdiction | DK |
+| Data sources | Middeldatabasen, SEGES Innovation, Aarhus Universitet, Miljostyrelsen |
+| License (data) | Public data (Danish government and research institutions) |
 | License (code) | Apache-2.0 |
 | Transport | stdio + Streamable HTTP |
 
@@ -88,7 +88,7 @@ Ask your AI assistant:
 | `get_ipm_guidance` | IPM thresholds, monitoring, and decision guides |
 | `search_crop_threats` | All threats affecting a specific crop |
 | `identify_from_symptoms` | Symptom-based differential diagnosis with confidence scoring |
-| `get_approved_products` | UK CRD-approved pesticide products |
+| `get_approved_products` | Danish-approved pesticide products from Middeldatabasen |
 
 See [TOOLS.md](TOOLS.md) for full parameter documentation.
 
@@ -105,7 +105,7 @@ See [SECURITY.md](SECURITY.md) for reporting policy.
 
 ## Disclaimer
 
-Pesticide data is for reference only. **Always check the current HSE CRD register before applying any product.** This tool is not professional pest management advice. See [DISCLAIMER.md](DISCLAIMER.md).
+Pesticide data is for reference only. **Always check the current Middeldatabasen (middeldatabasen.dk) for approved products and conditions before applying any product.** Pesticide use in Denmark requires a valid spray certificate (sprojtecertifikat). This tool is not professional pest management advice. See [DISCLAIMER.md](DISCLAIMER.md).
 
 ## Contributing
 
@@ -113,4 +113,4 @@ Issues and pull requests welcome. For security vulnerabilities, email security@a
 
 ## License
 
-Apache-2.0. Data sourced under Open Government Licence v3.
+Apache-2.0. Data sourced from Danish public government and research institutions.

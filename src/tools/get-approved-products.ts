@@ -56,6 +56,6 @@ export function handleGetApprovedProducts(db: Database, args: GetApprovedProduct
       registration_number: p.registration_number,
       source: p.source,
     })),
-    _meta: buildMeta({ source_url: 'https://www.hse.gov.uk/pesticides/databases/' }),
+    _meta: buildMeta({ source_url: 'https://middeldatabasen.dk' }),
   };
 }

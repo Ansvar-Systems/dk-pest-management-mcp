@@ -5,12 +5,12 @@ export function handleAbout() {
   return {
     name: 'Denmark Pest Management MCP',
     description:
-      'UK pest, disease, and weed identification, treatment options, IPM guidance, and symptom-based ' +
-      'differential diagnosis. Data sourced from AHDB crop protection publications and the HSE CRD ' +
-      'pesticide register.',
+      'Danish pest, disease, and weed identification, treatment options, IPM guidance, and symptom-based ' +
+      'differential diagnosis. Data sourced from Middeldatabasen, SEGES Innovation, Aarhus Universitet, ' +
+      'and Miljostyrelsen.',
     version: '0.1.0',
     jurisdiction: [...SUPPORTED_JURISDICTIONS],
-    data_sources: ['AHDB Knowledge Library', 'HSE CRD Pesticide Register', 'AHDB IPM Guidance'],
+    data_sources: ['Middeldatabasen', 'SEGES Innovation', 'Aarhus Universitet', 'Miljostyrelsen'],
     tools_count: 10,
     links: {
       homepage: 'https://ansvar.eu/open-agriculture',

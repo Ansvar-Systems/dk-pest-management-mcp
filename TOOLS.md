@@ -43,7 +43,7 @@ Search pests, diseases, and weeds by name or description. Use for broad queries 
 | `query` | string | Yes | Free-text search query |
 | `pest_type` | string | No | Filter by type: disease, weed, or pest |
 | `crop` | string | No | Filter results mentioning this crop |
-| `jurisdiction` | string | No | ISO 3166-1 alpha-2 code (default: GB) |
+| `jurisdiction` | string | No | ISO 3166-1 alpha-2 code (default: DK) |
 | `limit` | number | No | Max results (default: 20, max: 50) |
 
 **Example:** `{ "query": "septoria wheat" }`
@@ -57,7 +57,7 @@ Get full pest profile: identification, lifecycle, symptoms, crops affected.
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `pest_id` | string | Yes | Pest ID (e.g. septoria-tritici, blackgrass) |
-| `jurisdiction` | string | No | ISO 3166-1 alpha-2 code (default: GB) |
+| `jurisdiction` | string | No | ISO 3166-1 alpha-2 code (default: DK) |
 
 **Returns:** Full profile with identification markers, lifecycle, symptoms array (with confidence levels), crops affected, risk factors, economic impact.
 
@@ -73,7 +73,7 @@ Get treatment options for a pest: chemical, cultural, and biological approaches.
 |-----------|------|----------|-------------|
 | `pest_id` | string | Yes | Pest ID |
 | `approach` | string | No | Filter by approach: chemical, cultural, or biological |
-| `jurisdiction` | string | No | ISO 3166-1 alpha-2 code (default: GB) |
+| `jurisdiction` | string | No | ISO 3166-1 alpha-2 code (default: DK) |
 
 **Returns:** Treatment list with approach, active substance, timing, dose rate, efficacy notes, resistance risk, approval status.
 
@@ -89,7 +89,7 @@ Get integrated pest management guidance for a crop: thresholds, monitoring, cult
 |-----------|------|----------|-------------|
 | `crop_id` | string | Yes | Crop ID (e.g. winter-wheat) |
 | `pest_id` | string | No | Optional pest ID to narrow guidance |
-| `jurisdiction` | string | No | ISO 3166-1 alpha-2 code (default: GB) |
+| `jurisdiction` | string | No | ISO 3166-1 alpha-2 code (default: DK) |
 
 **Returns:** IPM guidance with thresholds, monitoring methods, cultural controls, prevention, decision guides.
 
@@ -105,7 +105,7 @@ Find all pests, diseases, and weeds affecting a specific crop.
 |-----------|------|----------|-------------|
 | `crop` | string | Yes | Crop name (e.g. wheat, barley, oilseed rape) |
 | `growth_stage` | string | No | Filter by growth stage (e.g. tillering, stem extension) |
-| `jurisdiction` | string | No | ISO 3166-1 alpha-2 code (default: GB) |
+| `jurisdiction` | string | No | ISO 3166-1 alpha-2 code (default: DK) |
 
 **Returns:** List of threats with pest_id, name, type, economic impact, risk factors.
 
@@ -122,7 +122,7 @@ Symptom-based differential diagnosis. Describe what you see and get ranked pest/
 | `symptoms` | string | Yes | Description of observed symptoms |
 | `plant_part` | string | No | Affected plant part (e.g. leaves, stem, roots) |
 | `crop` | string | No | Crop being assessed (for context) |
-| `jurisdiction` | string | No | ISO 3166-1 alpha-2 code (default: GB) |
+| `jurisdiction` | string | No | ISO 3166-1 alpha-2 code (default: DK) |
 
 **Returns:** Up to 5 ranked diagnoses, each with pest_id, pest_name, pest_type, matching_symptoms (with confidence level), confidence_score, and explanation. Scoring: diagnostic=3, suggestive=2, associated=1.
 
@@ -139,8 +139,8 @@ Search UK-approved pesticide products by active substance, target pest, or crop.
 | `active_substance` | string | No | Filter by active substance (e.g. prothioconazole) |
 | `target_pest` | string | No | Filter by target pest name |
 | `crop` | string | No | Filter by approved crop |
-| `jurisdiction` | string | No | ISO 3166-1 alpha-2 code (default: GB) |
+| `jurisdiction` | string | No | ISO 3166-1 alpha-2 code (default: DK) |
 
-**Returns:** Product list with name, active substance, target pests, approved crops, approval expiry, registration number. Always check the CRD register for current approval status.
+**Returns:** Product list with name, active substance, target pests, approved crops, approval expiry, registration number. Always check Middeldatabasen for current approval status.
 
 **Example:** `{ "active_substance": "prothioconazole", "crop": "wheat" }`

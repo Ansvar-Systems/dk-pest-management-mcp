@@ -8,45 +8,45 @@ export function createSeededDatabase(dbPath: string): Database {
     `INSERT INTO pests (id, name, common_names, pest_type, description, lifecycle, identification, crops_affected, risk_factors, economic_impact, images_description, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
-      'septoria-tritici', 'Septoria Tritici Blotch', JSON.stringify(['Septoria leaf blotch', 'Speckled leaf blotch']),
-      'disease', 'Fungal disease caused by Zymoseptoria tritici. Major foliar disease of wheat in the UK.',
-      'Rain-splashed spores infect leaves, 2-4 week latent period before visible symptoms.',
-      'Tan or grey irregular lesions with dark fruiting bodies (pycnidia) visible under hand lens.',
-      JSON.stringify(['wheat', 'winter wheat', 'spring wheat']),
-      'Warm wet autumn, mild winter, dense canopy during tillering and stem extension',
-      'Yield losses of 20-50% in untreated crops in high-pressure years.',
-      'Tan lesions with black pycnidia dots on leaf surface',
-      'GB',
+      'septoria-tritici', 'Septoria (Septoria tritici)', JSON.stringify(['hvedebladplet', 'Septoria tritici blotch', 'STB']),
+      'disease', 'Den vigtigste bladsvampesygdom i dansk vinterhvede. Foraarsager betydelige udbyttetab i fugtige aar.',
+      'Overvintrer i stubresterne. Spredes via regnspaenk. Udvikler sig i fugtigt vejr (>6 timer bladfugt).',
+      'Gule/brune pletter med sorte pyknidier paa blade. Starter nederst i bestanden.',
+      JSON.stringify(['vinterhvede', 'vinterbyg']),
+      'Tidlig saaning, modtagelige sorter, hvede efter hvede, rigelig nedbor',
+      'Udbyttetab paa 10-30% i ubehandlede marker i fugtige aar.',
+      'Gule/brune pletter med sorte pyknidier paa bladoverflade',
+      'DK',
     ]
   );
   db.run(
     `INSERT INTO pests (id, name, common_names, pest_type, description, lifecycle, identification, crops_affected, risk_factors, economic_impact, images_description, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
-      'blackgrass', 'Black-grass', JSON.stringify(['Slender meadow foxtail']),
-      'weed', 'Annual grass weed (Alopecurus myosuroides). Most serious herbicide-resistant weed in UK arable farming.',
-      'Germinates autumn through spring, flowers May-July, single plant produces up to 1000 seeds.',
-      'Distinctive dark purplish-black seed head. Leaves are smooth, slightly twisted, with a short blunt ligule.',
-      JSON.stringify(['wheat', 'winter wheat', 'barley', 'oilseed rape']),
-      'Continuous winter cropping, early drilling, heavy clay soils, mild wet autumns',
-      'Yield losses of 0.4-0.8 t/ha per 100 heads/m2. Herbicide resistance widespread.',
-      'Dark seed heads emerging above wheat canopy',
-      'GB',
+      'ukrudt-rajgraes', 'Agerraeveahle / Rajgraes (Alopecurus myosuroides / Lolium spp.)', JSON.stringify(['agerraeveahle', 'rajgraes', 'blackgrass']),
+      'weed', 'Tuedannende graesukrudt med stigende herbicidresistens i Danmark.',
+      'Fremspiring primaert om efteraaret. Froproduktion op til 10.000 froe per plante.',
+      'Tuedannende graesukrudt. Stigende herbicidresistens i DK.',
+      JSON.stringify(['vinterhvede', 'vinterbyg', 'vinterraps']),
+      'Ensidig vinterkornsdyrkning, reduceret jordbearbejdning, gentagen brug af ACCase/ALS-herbicider',
+      'Udbyttetab paa 20-50% ved kraftig bestand. Herbicidresistens oeger omkostningerne.',
+      'Tuedannende graes i kornbestand',
+      'DK',
     ]
   );
   db.run(
     `INSERT INTO pests (id, name, common_names, pest_type, description, lifecycle, identification, crops_affected, risk_factors, economic_impact, images_description, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
-      'grain-aphid', 'Grain Aphid', JSON.stringify(['English grain aphid', 'Sitobion avenae']),
-      'pest', 'Aphid species (Sitobion avenae) that feeds on cereal ears and upper leaves.',
-      'Winged adults colonise crops in late spring. Populations peak around flowering.',
-      'Green to reddish-brown aphid 2-3mm long, found on ears and flag leaves. Black cornicles (siphunculi).',
-      JSON.stringify(['wheat', 'barley', 'oats']),
-      'Warm dry spring, low natural enemy numbers, early ear emergence',
-      'Direct feeding damage and honeydew causing sooty moulds. Yield loss up to 15% in severe outbreaks.',
-      'Clusters of green-brown aphids on wheat ear',
-      'GB',
+      'bladlus-korn', 'Bladlus i korn (Sitobion avenae / Rhopalosiphum padi)', JSON.stringify(['kornbladlus', 'havrebladlus', 'grain aphid']),
+      'insect', 'Kornbladlus og havrebladlus er de vigtigste bladlusarter i dansk korn.',
+      'Havrebladlus overvintrer paa haeg. Indflyvning i kornmarker fra maj.',
+      'Groenne eller roede kolonier, ofte i aks eller paa flag/fanebladet.',
+      JSON.stringify(['vinterhvede', 'vaarbyg', 'havre']),
+      'Varmt, toert foraar, tidlig indflyvning, fravaer af nyttedyr',
+      'Direkte sugetab op til 10-15% ved staerke angreb.',
+      'Groenne/roede bladluskolonier paa kornaks',
+      'DK',
     ]
   );
 
@@ -54,41 +54,41 @@ export function createSeededDatabase(dbPath: string): Database {
   db.run(
     `INSERT INTO symptoms (pest_id, symptom, plant_part, timing, confidence)
      VALUES (?, ?, ?, ?, ?)`,
-    ['septoria-tritici', 'Tan or grey lesions with dark pycnidia on leaves', 'leaves', 'autumn through spring', 'diagnostic']
+    ['septoria-tritici', 'Gule/brune pletter med sorte pyknidier', 'blade', 'BBCH 25-69', 'high']
   );
   db.run(
     `INSERT INTO symptoms (pest_id, symptom, plant_part, timing, confidence)
      VALUES (?, ?, ?, ?, ?)`,
-    ['septoria-tritici', 'Yellow patches on lower leaves', 'leaves', 'autumn and early spring', 'suggestive']
+    ['septoria-tritici', 'Sammenflydende nekrotiske omraader paa nedre blade', 'nedre blade', 'BBCH 30-45', 'high']
   );
   db.run(
     `INSERT INTO symptoms (pest_id, symptom, plant_part, timing, confidence)
      VALUES (?, ?, ?, ?, ?)`,
-    ['septoria-tritici', 'Reduced grain fill in severe cases', 'ears', 'summer', 'associated']
-  );
-
-  // Symptoms -- Blackgrass (2 symptoms)
-  db.run(
-    `INSERT INTO symptoms (pest_id, symptom, plant_part, timing, confidence)
-     VALUES (?, ?, ?, ?, ?)`,
-    ['blackgrass', 'Dark purplish-black seed heads above crop canopy', 'seed head', 'May to July', 'diagnostic']
-  );
-  db.run(
-    `INSERT INTO symptoms (pest_id, symptom, plant_part, timing, confidence)
-     VALUES (?, ?, ?, ?, ?)`,
-    ['blackgrass', 'Patches of thin or stunted crop with grass weed competition', 'whole plant', 'spring', 'suggestive']
+    ['septoria-tritici', 'Reduceret kornfyldning ved svaere angreb', 'aks', 'BBCH 70-85', 'medium']
   );
 
-  // Symptoms -- Grain Aphid (2 symptoms)
+  // Symptoms -- Rajgraes (2 symptoms)
   db.run(
     `INSERT INTO symptoms (pest_id, symptom, plant_part, timing, confidence)
      VALUES (?, ?, ?, ?, ?)`,
-    ['grain-aphid', 'Clusters of small green-brown insects on ears and upper leaves', 'ears', 'late spring to summer', 'diagnostic']
+    ['ukrudt-rajgraes', 'Tuedannende graes i kornbestanden', 'hele planten', 'BBCH 13-30', 'high']
   );
   db.run(
     `INSERT INTO symptoms (pest_id, symptom, plant_part, timing, confidence)
      VALUES (?, ?, ?, ?, ?)`,
-    ['grain-aphid', 'Sticky honeydew deposits and sooty mould on leaves', 'leaves', 'summer', 'suggestive']
+    ['ukrudt-rajgraes', 'Tynde eller forkroebne afgroedepletter med graesukrudtskonkurrence', 'hele planten', 'foraar', 'medium']
+  );
+
+  // Symptoms -- Bladlus (2 symptoms)
+  db.run(
+    `INSERT INTO symptoms (pest_id, symptom, plant_part, timing, confidence)
+     VALUES (?, ?, ?, ?, ?)`,
+    ['bladlus-korn', 'Groenne/roede kolonier paa blade eller i aks', 'blade, aks', 'BBCH 37-75', 'high']
+  );
+  db.run(
+    `INSERT INTO symptoms (pest_id, symptom, plant_part, timing, confidence)
+     VALUES (?, ?, ?, ?, ?)`,
+    ['bladlus-korn', 'Honningdug og sodskimmel', 'blade', 'BBCH 51-77', 'medium']
   );
 
   // Treatments -- Septoria (1 chemical, 1 cultural)
@@ -96,82 +96,82 @@ export function createSeededDatabase(dbPath: string): Database {
     `INSERT INTO treatments (pest_id, approach, treatment, active_substance, timing, dose_rate, efficacy_notes, resistance_risk, approval_status, source, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
-      'septoria-tritici', 'chemical', 'Foliar fungicide application (T1/T2 timing)',
-      'prothioconazole + bixafen', 'T1 (GS30-32) and T2 (GS39-49)',
-      'See product label', 'Good protectant and curative activity. Best applied preventatively.',
-      'Azole resistance increasing. Use mixtures and alternate modes of action.',
-      'approved', 'AHDB', 'GB',
+      'septoria-tritici', 'chemical', 'Prosaro (prothioconazole + tebuconazole)',
+      'prothioconazole 125 g/l + tebuconazole 125 g/l', 'BBCH 37-61',
+      '0.5-1.0 l/ha', 'God effekt mod Septoria. Bedst som blanding med SDHI.',
+      'Moderat. Azol-resistens er stigende i DK.',
+      'Godkendt i DK', 'Middeldatabasen', 'DK',
     ]
   );
   db.run(
     `INSERT INTO treatments (pest_id, approach, treatment, active_substance, timing, dose_rate, efficacy_notes, resistance_risk, approval_status, source, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
-      'septoria-tritici', 'cultural', 'Variety resistance and delayed drilling',
-      null, 'Pre-planting and variety selection',
-      null, 'Choose varieties with high septoria resistance rating (7+). Delay drilling to reduce autumn infection.',
-      null, null, 'AHDB', 'GB',
+      'septoria-tritici', 'non_chemical', 'Resistent sortsvalg og sen saatid',
+      null, 'Ved saaning',
+      null, 'Vaelg sorter med hoej Septoria-resistens. Sen saaning reducerer smittetrykket.',
+      null, null, 'SEGES Innovation', 'DK',
     ]
   );
 
-  // Treatments -- Blackgrass (1 chemical, 1 cultural)
+  // Treatments -- Rajgraes (1 chemical, 1 cultural)
   db.run(
     `INSERT INTO treatments (pest_id, approach, treatment, active_substance, timing, dose_rate, efficacy_notes, resistance_risk, approval_status, source, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
-      'blackgrass', 'chemical', 'Pre-emergence herbicide application',
-      'flufenacet + diflufenican', 'Pre-emergence (within 48h of drilling)',
-      'See product label', 'Residual activity. Best on moist seedbeds. Reduced efficacy on dry soils.',
-      'Metabolic resistance widespread. Stack sequences for best control.',
-      'approved', 'AHDB', 'GB',
+      'ukrudt-rajgraes', 'chemical', 'Boxer (prosulfocarb)',
+      'prosulfocarb 800 g/l', 'Pre-emergence eller tidlig post-emergence',
+      '2.0-3.0 l/ha', 'Jordvirkende middel med god effekt mod rajgraes.',
+      'Lav. Anden virkningsmekanisme end ACCase/ALS.',
+      'Godkendt i DK', 'Middeldatabasen', 'DK',
     ]
   );
   db.run(
     `INSERT INTO treatments (pest_id, approach, treatment, active_substance, timing, dose_rate, efficacy_notes, resistance_risk, approval_status, source, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
-      'blackgrass', 'cultural', 'Delayed drilling and spring cropping',
-      null, 'Autumn planting decisions',
-      null, 'Delay drilling to late October or switch to spring crops. Stale seedbeds before drilling.',
-      null, null, 'AHDB', 'GB',
-    ]
-  );
-
-  // Treatments -- Grain Aphid (1 chemical, 1 cultural)
-  db.run(
-    `INSERT INTO treatments (pest_id, approach, treatment, active_substance, timing, dose_rate, efficacy_notes, resistance_risk, approval_status, source, jurisdiction)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-    [
-      'grain-aphid', 'chemical', 'Pyrethroid insecticide spray',
-      'lambda-cyhalothrin', 'When threshold exceeded (66% of tillers with aphids)',
-      'See product label', 'Fast knockdown. Avoid broad-spectrum use to preserve natural enemies.',
-      'Low current resistance but broad-spectrum impact on beneficials.',
-      'approved', 'AHDB', 'GB',
-    ]
-  );
-  db.run(
-    `INSERT INTO treatments (pest_id, approach, treatment, active_substance, timing, dose_rate, efficacy_notes, resistance_risk, approval_status, source, jurisdiction)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-    [
-      'grain-aphid', 'cultural', 'Conservation biological control',
-      null, 'Season-long',
-      null, 'Maintain field margins and beetle banks to support natural enemies (ladybirds, parasitoids, hoverflies).',
-      null, null, 'AHDB', 'GB',
+      'ukrudt-rajgraes', 'non_chemical', 'Saedskifte med vaarsaed og ploejning',
+      null, 'Saedskifteplanlsegning',
+      null, 'Afbryd med vaarsaed hvert 2.-3. aar. Ploejning nedmulder froe.',
+      null, null, 'SEGES Innovation', 'DK',
     ]
   );
 
-  // IPM guidance -- winter wheat + septoria
+  // Treatments -- Bladlus (1 chemical, 1 cultural)
+  db.run(
+    `INSERT INTO treatments (pest_id, approach, treatment, active_substance, timing, dose_rate, efficacy_notes, resistance_risk, approval_status, source, jurisdiction)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    [
+      'bladlus-korn', 'chemical', 'Pirimor (pirimicarb)',
+      'pirimicarb 500 g/kg', 'BBCH 51-69, ved >40% straa med lus',
+      '0.15-0.3 kg/ha', 'Selektivt middel der skaaner nyttedyr.',
+      'Lav til moderat.',
+      'Godkendt i DK', 'Middeldatabasen', 'DK',
+    ]
+  );
+  db.run(
+    `INSERT INTO treatments (pest_id, approach, treatment, active_substance, timing, dose_rate, efficacy_notes, resistance_risk, approval_status, source, jurisdiction)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    [
+      'bladlus-korn', 'non_chemical', 'Nyttedyr (snyltehvepse, mariehons)',
+      null, 'Hele vaekstperioden',
+      null, 'Naturlige fjender kan holde bladluspopulationer under skadetaersklen.',
+      null, null, 'SEGES Innovation', 'DK',
+    ]
+  );
+
+  // IPM guidance -- vinterhvede + septoria
   db.run(
     `INSERT INTO ipm_guidance (crop_id, pest_id, threshold, monitoring_method, cultural_controls, prevention, decision_guide, source, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
-      'winter-wheat', 'septoria-tritici',
-      'Septoria on upper 3 leaves by GS32; >20% leaf area affected on leaf 3',
-      'Regular leaf assessments from GS30. Check rain splash infection risk using AHDB disease risk tool.',
-      'Resistant varieties (rating 7+), delayed drilling, wider row spacing for air circulation',
-      'Select varieties with high septoria resistance. Avoid very early drilling in high-risk areas.',
-      'Base T1 decision on variety resistance, autumn/winter rainfall, and leaf infection levels. T2 protects flag leaf.',
-      'AHDB', 'GB',
+      'vinterhvede', 'septoria-tritici',
+      'Septoria paa 3. oeverste blad ved BBCH 37-39',
+      'Ugentlig inspektion af nedre blade fra BBCH 30. Brug Plantevaern Onlines beslutningsstoettesystem.',
+      'Resistent sortsvalg, sen saatid, stubbearbejdning, saedskifte',
+      'Forebyggelse via sortsvalg og saedskifte reducerer behovet for kemisk bekaempelse med 30-50%.',
+      'Fuld/halv dosis afhaengt af sortens modtagelighed. Se Landsforsogene.',
+      'SEGES Innovation', 'DK',
     ]
   );
 
@@ -180,16 +180,16 @@ export function createSeededDatabase(dbPath: string): Database {
     `INSERT INTO approved_products (product_name, active_substance, target_pests, approved_crops, approval_expiry, registration_number, source, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
     [
-      'Aviator 235 Xpro', 'prothioconazole + bixafen', 'Septoria, rusts, eyespot',
-      'wheat, barley', '2027-12-31', 'MAPP 16054', 'CRD', 'GB',
+      'Prosaro EC 250', 'prothioconazole 125 g/l + tebuconazole 125 g/l', 'Septoria, gulrust, brunrust, akseskimmel',
+      'vinterhvede, vinterbyg, vaarbyg', '2027-07-31', 'DK-18-00841', 'Middeldatabasen', 'DK',
     ]
   );
   db.run(
     `INSERT INTO approved_products (product_name, active_substance, target_pests, approved_crops, approval_expiry, registration_number, source, jurisdiction)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
     [
-      'Liberator', 'flufenacet + diflufenican', 'Blackgrass, annual meadow-grass, ryegrass',
-      'wheat, barley, oilseed rape', '2028-06-30', 'MAPP 14217', 'CRD', 'GB',
+      'Pirimor 500 WG', 'pirimicarb 500 g/kg', 'Bladlus',
+      'korn, raps, kartofler', '2026-10-31', 'DK-1-00052', 'Middeldatabasen', 'DK',
     ]
   );
 
@@ -197,28 +197,28 @@ export function createSeededDatabase(dbPath: string): Database {
   db.run(
     `INSERT INTO search_index (name, common_names, description, identification, pest_type, jurisdiction) VALUES (?, ?, ?, ?, ?, ?)`,
     [
-      'Septoria Tritici Blotch', 'Septoria leaf blotch, Speckled leaf blotch',
-      'Fungal disease caused by Zymoseptoria tritici. Major foliar disease of wheat in the UK.',
-      'Tan or grey irregular lesions with dark fruiting bodies (pycnidia) visible under hand lens.',
-      'disease', 'GB',
+      'Septoria (Septoria tritici)', 'hvedebladplet, Septoria tritici blotch, STB',
+      'Den vigtigste bladsvampesygdom i dansk vinterhvede. Foraarsager betydelige udbyttetab i fugtige aar.',
+      'Gule/brune pletter med sorte pyknidier paa blade. Starter nederst i bestanden.',
+      'disease', 'DK',
     ]
   );
   db.run(
     `INSERT INTO search_index (name, common_names, description, identification, pest_type, jurisdiction) VALUES (?, ?, ?, ?, ?, ?)`,
     [
-      'Black-grass', 'Slender meadow foxtail',
-      'Annual grass weed (Alopecurus myosuroides). Most serious herbicide-resistant weed in UK arable farming.',
-      'Distinctive dark purplish-black seed head. Leaves are smooth, slightly twisted, with a short blunt ligule.',
-      'weed', 'GB',
+      'Agerraeveahle / Rajgraes (Alopecurus myosuroides / Lolium spp.)', 'agerraeveahle, rajgraes, blackgrass',
+      'Tuedannende graesukrudt med stigende herbicidresistens i Danmark.',
+      'Tuedannende graesukrudt. Stigende herbicidresistens i DK.',
+      'weed', 'DK',
     ]
   );
   db.run(
     `INSERT INTO search_index (name, common_names, description, identification, pest_type, jurisdiction) VALUES (?, ?, ?, ?, ?, ?)`,
     [
-      'Grain Aphid', 'English grain aphid, Sitobion avenae',
-      'Aphid species (Sitobion avenae) that feeds on cereal ears and upper leaves.',
-      'Green to reddish-brown aphid 2-3mm long, found on ears and flag leaves. Black cornicles (siphunculi).',
-      'pest', 'GB',
+      'Bladlus i korn (Sitobion avenae / Rhopalosiphum padi)', 'kornbladlus, havrebladlus, grain aphid',
+      'Kornbladlus og havrebladlus er de vigtigste bladlusarter i dansk korn.',
+      'Groenne eller roede kolonier, ofte i aks eller paa flag/fanebladet.',
+      'insect', 'DK',
     ]
   );
 
