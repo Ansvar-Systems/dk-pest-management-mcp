@@ -54,7 +54,7 @@ function initSchema(db: BetterSqlite3.Database): void {
       risk_factors TEXT,
       economic_impact TEXT,
       images_description TEXT,
-      jurisdiction = 'DK'
+      jurisdiction TEXT DEFAULT 'DK'
     );
 
     CREATE TABLE IF NOT EXISTS treatments (
@@ -69,7 +69,7 @@ function initSchema(db: BetterSqlite3.Database): void {
       resistance_risk TEXT,
       approval_status TEXT,
       source TEXT,
-      jurisdiction = 'DK'
+      jurisdiction TEXT DEFAULT 'DK'
     );
 
     CREATE TABLE IF NOT EXISTS ipm_guidance (
@@ -82,7 +82,7 @@ function initSchema(db: BetterSqlite3.Database): void {
       prevention TEXT,
       decision_guide TEXT,
       source TEXT,
-      jurisdiction = 'DK'
+      jurisdiction TEXT DEFAULT 'DK'
     );
 
     CREATE TABLE IF NOT EXISTS symptoms (
@@ -103,7 +103,7 @@ function initSchema(db: BetterSqlite3.Database): void {
       approval_expiry TEXT,
       registration_number TEXT,
       source TEXT DEFAULT 'CRD',
-      jurisdiction = 'DK'
+      jurisdiction TEXT DEFAULT 'DK'
     );
 
     CREATE VIRTUAL TABLE IF NOT EXISTS search_index USING fts5(
@@ -117,7 +117,7 @@ function initSchema(db: BetterSqlite3.Database): void {
 
     INSERT OR IGNORE INTO db_metadata (key, value) VALUES ('schema_version', '1.0');
     INSERT OR IGNORE INTO db_metadata (key, value) VALUES ('mcp_name', 'Denmark Pest Management MCP');
-    INSERT OR IGNORE INTO db_metadata (key, value) VALUES ('jurisdiction = 'DK');
+    INSERT OR IGNORE INTO db_metadata (key, value) VALUES ('jurisdiction', 'DK');
   `);
 }
 
