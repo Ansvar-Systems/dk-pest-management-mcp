@@ -1,4 +1,5 @@
 import { buildMeta } from '../metadata.js';
+import { buildCitation } from '../citation.js';
 import { validateJurisdiction } from '../jurisdiction.js';
 import type { Database } from '../db.js';
 
@@ -57,5 +58,16 @@ export function handleGetApprovedProducts(db: Database, args: GetApprovedProduct
       source: p.source,
     })),
     _meta: buildMeta({ source_url: 'https://middeldatabasen.dk' }),
+    _citation: buildCitation(
+      `approved-products:${args.active_substance ?? args.target_pest ?? args.crop ?? 'all'}`,
+      `Approved products${args.active_substance ? `: ${args.active_substance}` : ''}`,
+      'get_approved_products',
+      {
+        ...(args.active_substance ? { active_substance: args.active_substance } : {}),
+        ...(args.target_pest ? { target_pest: args.target_pest } : {}),
+        ...(args.crop ? { crop: args.crop } : {}),
+      },
+      'https://middeldatabasen.dk',
+    ),
   };
 }

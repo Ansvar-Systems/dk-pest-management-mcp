@@ -1,4 +1,5 @@
 import { buildMeta } from '../metadata.js';
+import { buildCitation } from '../citation.js';
 import { validateJurisdiction } from '../jurisdiction.js';
 import type { Database } from '../db.js';
 
@@ -46,5 +47,11 @@ export function handleGetTreatments(db: Database, args: GetTreatmentsArgs) {
       source: t.source,
     })),
     _meta: buildMeta(),
+    _citation: buildCitation(
+      `treatments:${args.pest_id}`,
+      `Treatments for ${args.pest_id}`,
+      'get_treatments',
+      { pest_id: args.pest_id, ...(args.approach ? { approach: args.approach } : {}) },
+    ),
   };
 }
